@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
+import guru.springframework.sfgdi.controllers.I18nController;
 import guru.springframework.sfgdi.controllers.MyController;
 import guru.springframework.sfgdi.controllers.PropertyInjectedController;
 import guru.springframework.sfgdi.controllers.SetterInjectedController;
@@ -17,7 +18,10 @@ public class SfgDiApplication {
 		 * Ira retornar ao contexto da aplicacao.
 		 */
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
-
+		
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
+		
 		/*
 		 * Spring context criou um objeto do nosso bean e nos o recuperamos, passando
 		 * para a referencia myController
@@ -26,6 +30,7 @@ public class SfgDiApplication {
 
 		String greeting = myController.sayHello();
 
+		System.out.println("----Primary Bean");
 		System.out.println(greeting);
 
 		System.out.println("----property");
@@ -45,6 +50,8 @@ public class SfgDiApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx
 				.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.sayHello());
+
+	
 	}
 
 }

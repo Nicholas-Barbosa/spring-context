@@ -6,12 +6,13 @@ import org.springframework.stereotype.Controller;
 import guru.springframework.sfgdi.services.GreetingService;
 
 @Controller
-public class ConstructorInjectedController {
+public class I18nController {
 
 	private final GreetingService greetingService;
 
-	public ConstructorInjectedController(@Qualifier("constructorGreetingService")GreetingService greetingService) {
-		this.greetingService = greetingService;
+	public I18nController(@Qualifier("i18nService") GreetingService service) {
+		super();
+		this.greetingService = service;
 	}
 
 	public String sayHello() {

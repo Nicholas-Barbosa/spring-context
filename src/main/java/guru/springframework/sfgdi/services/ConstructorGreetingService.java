@@ -3,10 +3,10 @@ package guru.springframework.sfgdi.services;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GreetingServiceImpl implements GreetingInterface {
+public class ConstructorGreetingService implements GreetingService {
 
 	@Override
 	public String sayGreeting() {
-		return "Helo World!";
+		return "Helo World - Constructor!";
 	}
 }
