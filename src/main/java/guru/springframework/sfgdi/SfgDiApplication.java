@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
 import guru.springframework.sfgdi.controllers.I18nController;
 import guru.springframework.sfgdi.controllers.MyController;
+import guru.springframework.sfgdi.controllers.PetController;
 import guru.springframework.sfgdi.controllers.PropertyInjectedController;
 import guru.springframework.sfgdi.controllers.SetterInjectedController;
 
@@ -18,10 +19,15 @@ public class SfgDiApplication {
 		 * Ira retornar ao contexto da aplicacao.
 		 */
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
-		
+
+		PetController petController = (PetController) ctx.getBean("petController");
+
+		System.out.println("----The Best Pet is");
+		System.out.println(petController.message());
+
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 		System.out.println(i18nController.sayHello());
-		
+
 		/*
 		 * Spring context criou um objeto do nosso bean e nos o recuperamos, passando
 		 * para a referencia myController
@@ -51,7 +57,6 @@ public class SfgDiApplication {
 				.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.sayHello());
 
-	
 	}
 
 }
