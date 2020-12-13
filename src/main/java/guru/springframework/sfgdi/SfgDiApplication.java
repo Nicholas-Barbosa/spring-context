@@ -10,6 +10,7 @@ import guru.springframework.sfgdi.controllers.MyController;
 import guru.springframework.sfgdi.controllers.PetController;
 import guru.springframework.sfgdi.controllers.PropertyInjectedController;
 import guru.springframework.sfgdi.controllers.SetterInjectedController;
+import guru.springframework.sfgdi.examplefakebeans.FakeDataSource;
 
 @SpringBootApplication
 public class SfgDiApplication {
@@ -56,6 +57,9 @@ public class SfgDiApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx
 				.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.sayHello());
+
+		FakeDataSource fakeDs = (FakeDataSource) ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDs);
 
 	}
 
